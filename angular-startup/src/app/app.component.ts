@@ -18,6 +18,11 @@ export class AppComponent {
       name: 'About',
       link: '#/about',
       active: false
+    },
+    {
+      name: 'Forms',
+      link: '#/form',
+      active: false
     }
   ];
 }

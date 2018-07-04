@@ -4,6 +4,8 @@ import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AboutComponent} from './about/about.component';
 import {SkillsComponent} from './skills/skills.component';
+import {FormComponent} from './form/form.component';
+import {FormWrapperComponent} from './form/form-wrapper.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,10 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'form',
+    component: FormWrapperComponent
   },
   {
     path: 'not-found',

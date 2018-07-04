@@ -11,6 +11,7 @@ import {SkillsModule} from './skills/skills.module';
 import { SharedModule } from './shared/shared.module';
 import { NavbarModule } from './navbar/navbar.module';
 import {TodosModule} from './todos/todos.module';
+import { FormModule } from './form/form.module';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {TodosModule} from './todos/todos.module';
     SharedModule,
     SkillsModule.forRoot(),
     TodosModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormModule
   ],
   providers: [],
   bootstrap: [AppComponent]
