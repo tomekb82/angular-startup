@@ -11,4 +11,6 @@ export interface FormField {
   type: string;
   options: OptionField[];
   multiple: boolean;
+  textarea: string;
+  select: OptionField[];
 }

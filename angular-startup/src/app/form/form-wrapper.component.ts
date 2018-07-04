@@ -5,9 +5,13 @@ import {FormField} from '../model/form-field';
   selector: 'form-wrapper',
   template: `
     <h3>{{ title }}</h3>
+    <b *ngIf="status">Status: {{ status }} </b>
     <div class="row">
       <div class="col-3">
-        <my-form [fields]="fields"></my-form>
+        <my-form [fields]="fields" (fieldsChange)="afterSave($event)"></my-form>
+      </div>
+      <div class="col-3">
+        <pre *ngIf="savedData">{{ savedData | json }}</pre>
       </div>
     </div>
   `,
@@ -15,7 +19,9 @@ import {FormField} from '../model/form-field';
 })
 export class FormWrapperComponent implements OnInit {
 
-  title = 'Form';
+  title = 'Form - template driven';
+  status;
+  savedData;
 
   fields: FormField = [
     {
@@ -29,27 +35,36 @@ export class FormWrapperComponent implements OnInit {
       type: 'checkbox'
     },
     {
-      //label: "Checkbox label",
-      enabled: false,
+      label: "Radio label",
+      enabled: true,
+      options: [
+        { label: "Disabled", enabled: false },
+        { label: "Enabled", enabled: true }
+      ],
       type: 'radio'
     },
     {
       label: "Textarea label",
-      value: "default value",
+      textarea: "default textarea value",
       type: 'textarea'
     },
     {
-      label: "Textarea label",
+      label: "Select label",
       options: [
         { type: 'text', label:'Text Field'},
         { type: 'checkbox', label:'Checkbox Field'},
         { type: 'select', label:'Select Field'},
       ],
-      value: [{ type: 'checkbox', label:'Checkbox Field'}],
+      select: [{ type: 'checkbox', label:'Checkbox Field'}],
       type: 'select',
       multiple: false,
     }
   ];
+
+  afterSave(response) {
+    this.status = 'Form saved';
+    this.savedData = response;
+  }
 
   constructor() { }
 

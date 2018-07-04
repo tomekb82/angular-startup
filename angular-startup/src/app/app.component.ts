@@ -20,7 +20,7 @@ export class AppComponent {
       active: false
     },
     {
-      name: 'Forms',
+      name: 'Forms - template',
       link: '#/form',
       active: false
     }
