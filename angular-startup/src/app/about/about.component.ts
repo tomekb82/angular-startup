@@ -11,18 +11,17 @@ import {SelectableService} from '../selectable/selectable.service';
             Skills list:
           </h1>
           {{selected | json}}
-
+          
           <div class="row">
             <ng-container [(selection)]="selected">
               <div class="col">
                 <skills></skills>
-                <todos></todos>
               </div>
               <div class="col">
-                <todos></todos>
+                <skills></skills>  <!-- wspoldzielona usluga/kontekst -->
               </div>
-              <div class="col" selection>
-                <todos></todos>
+              <div class="col" selection> <!-- posiada oddzielna usluge == osobny kontekst -->
+                <skills></skills>
               </div>
             </ng-container>
           </div>
