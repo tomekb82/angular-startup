@@ -11,9 +11,9 @@ import {SelectableService} from '../selectable/selectable.service';
       </div>
     </div>
   `,
-  viewProviders: [
+ /* viewProviders: [
     SelectableService
-  ],
+  ],*/
   styles: []
 })
 export class SkillsComponent implements OnInit {

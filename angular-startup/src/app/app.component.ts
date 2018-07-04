@@ -7,8 +7,6 @@ import {Nav} from './model/nav';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
-
 
   nav: Nav[] = [
     {

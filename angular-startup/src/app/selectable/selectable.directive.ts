@@ -19,11 +19,13 @@ export class SelectableDirective implements OnDestroy, OnInit {
   @HostBinding('class.active')
   selected = false;
 
-  constructor(@Host() private service: SelectableService) {
+  constructor(/*@Host() */private service: SelectableService) {
   }
 
   ngOnInit() {
-    this.subscription = this.service.selectionChange.subscribe(selected => this.selected = selected === this.item)
+    this.selected = this.service.selection === this.item;
+
+    this.subscription = this.service.selectionChange.subscribe(selected => this.selected = (selected === this.item));
   }
 
   ngOnDestroy() {
