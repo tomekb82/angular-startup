@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import {SkillsModule} from './skills/skills.module';
 import { SharedModule } from './shared/shared.module';
 import { NavbarModule } from './navbar/navbar.module';
+import {TodosModule} from './todos/todos.module';
 
 @NgModule({
   declarations: [
@@ -21,8 +22,9 @@ import { NavbarModule } from './navbar/navbar.module';
   imports: [
     BrowserModule,
     NavbarModule,
-    SkillsModule,
     SharedModule,
+    SkillsModule.forRoot(),
+    TodosModule,
     AppRoutingModule
   ],
   providers: [],
