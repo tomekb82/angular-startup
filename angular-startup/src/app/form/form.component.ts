@@ -50,7 +50,7 @@ import * as keys from 'lodash/keys';
             <div class="form-group">
               <label>{{ field.label }}</label>
               <select class="form-control" [ngModel]="field.select" [compareWith]="compareType" [multiple]="field.multiple" name="select">
-                <option *ngFor="let option of field.options" [ngValue]="option">{{option.label}}</option>
+                <option *ngFor="let option of options" [ngValue]="option">{{option.label}}</option>
               </select>
             </div>
           </div>
@@ -59,6 +59,22 @@ import * as keys from 'lodash/keys';
         
       </div>
 
+      <label>Extra Options
+        <input type="checkbox" ngModel name="has_extra">
+      </label>
+
+      <!--<ng-container ngModelGroup="extra" *ngIf="form.value.has_extra">
+        <div class="form-group" *ngFor="let option of extra_fields" [ngModelGroup]="option.key">
+          <label>{{option.key}}</label>
+          <input type="text" class="form-control" ngModel [name]="option.key">
+        </div>
+
+        <div class="input-group">
+          <input #key class="form-control">
+          <button class="btn" (click)="addExtra(key.value); key.value = ''">Add Option</button>
+        </div>
+      </ng-container>-->
+      
       <div class="form-group">
         <button class="btn btn-success">Save</button>
         <button class="btn btn-danger" type="button" (click)="cancel()">Cancel</button>
@@ -82,6 +98,12 @@ export class FormComponent implements OnInit {
 
   compareType(type1, type2) {
     return  type2 && type1.type === type2.type;
+  }
+
+  extra_fields = [];
+
+  addExtra(key){
+    this.extra_fields.push({key});
   }
 
   save() {

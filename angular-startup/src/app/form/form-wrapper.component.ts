@@ -8,10 +8,12 @@ import {FormField} from '../model/form-field';
     <b *ngIf="status">Status: {{ status }} </b>
     <div class="row">
       <div class="col-3">
-        <my-form [fields]="fields" (fieldsChange)="afterSave($event)"></my-form>
+        <!--<my-form [fields]="fields" (fieldsChange)="afterSave($event)"></my-form>-->
+        <my-form-group [fields]="fieldsGroup" (fieldsChange)="afterSaveGroup($event)"></my-form-group>
       </div>
       <div class="col-3">
-        <pre *ngIf="savedData">{{ savedData | json }}</pre>
+        <!--<pre *ngIf="fields">{{ fields | json }}</pre>-->
+        <pre *ngIf="fieldsGroup">{{ fieldsGroup | json }}</pre>
       </div>
     </div>
   `,
@@ -21,7 +23,29 @@ export class FormWrapperComponent implements OnInit {
 
   title = 'Form - template driven';
   status;
-  savedData;
+
+  fieldsGroup = {
+    text: {
+      value: 'default value'
+    },
+    checkbox: {
+      active: true
+    },
+    radio: {
+      enabled: true,
+    },
+    textarea: {
+      value: 'default textarea value',
+    },
+    select: {
+      /*options: [
+        { type: 'text', label:'Text Field'},
+        { type: 'checkbox', label:'Checkbox Field'},
+        { type: 'select', label:'Select Field'},
+      ],*/
+      select: { type: 'checkbox', label: 'Checkbox Field'},
+    }
+  };
 
   fields: FormField = [
     {
@@ -63,7 +87,12 @@ export class FormWrapperComponent implements OnInit {
 
   afterSave(response) {
     this.status = 'Form saved';
-    this.savedData = response;
+    this.fields = response;
+  }
+
+  afterSaveGroup(response) {
+    this.status = 'Form saved';
+    this.fieldsGroup = response;
   }
 
   constructor() { }
