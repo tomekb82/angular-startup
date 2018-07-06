@@ -23,6 +23,11 @@ export class AppComponent {
       name: 'Forms - template',
       link: '#/form',
       active: false
+    },
+    {
+      name: 'Forms - reactive',
+      link: '#/form-reactive',
+      active: false
     }
   ];
 }

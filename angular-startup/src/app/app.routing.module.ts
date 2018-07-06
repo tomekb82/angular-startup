@@ -6,6 +6,8 @@ import {AboutComponent} from './about/about.component';
 import {SkillsComponent} from './skills/skills.component';
 import {FormComponent} from './form/form.component';
 import {FormWrapperComponent} from './form/form-wrapper.component';
+import {FormReactiveComponent} from './form-reactive/form-reactive.component';
+import {FormReactiveWrapperComponent} from './form-reactive/form-reactive-wrapper.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,10 @@ const routes: Routes = [
   {
     path: 'form',
     component: FormWrapperComponent
+  },
+  {
+    path: 'form-reactive',
+    component: FormReactiveWrapperComponent
   },
   {
     path: 'not-found',

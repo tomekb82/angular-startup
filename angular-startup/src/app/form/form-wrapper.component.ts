@@ -47,39 +47,39 @@ export class FormWrapperComponent implements OnInit {
     }
   };
 
-  fields: FormField = [
+  fields = [
     {
-      label: "Text label",
-      value: "default value",
+      label: 'Text label',
+      value: 'default value',
       type: 'text'
     },
     {
-      label: "Checkbox label",
+      label: 'Checkbox label',
       active: true,
       type: 'checkbox'
     },
     {
-      label: "Radio label",
+      label: 'Radio label',
       enabled: true,
       options: [
-        { label: "Disabled", enabled: false },
-        { label: "Enabled", enabled: true }
+        { label: 'Disabled', enabled: false },
+        { label: 'Enabled', enabled: true }
       ],
       type: 'radio'
     },
     {
-      label: "Textarea label",
-      textarea: "default textarea value",
+      label: 'Textarea label',
+      textarea: 'default textarea value',
       type: 'textarea'
     },
     {
-      label: "Select label",
-      options: [
-        { type: 'text', label:'Text Field'},
-        { type: 'checkbox', label:'Checkbox Field'},
-        { type: 'select', label:'Select Field'},
-      ],
-      select: [{ type: 'checkbox', label:'Checkbox Field'}],
+      label: 'Select label',
+      /*options: [
+        { type: 'text', label: 'Text Field'},
+        { type: 'checkbox', label: 'Checkbox Field'},
+        { type: 'select', label: 'Select Field'},
+      ],*/
+      select: [{ type: 'checkbox', label: 'Checkbox Field'}],
       type: 'select',
       multiple: false,
     }

@@ -88,7 +88,7 @@ import * as keys from 'lodash/keys';
 export class FormComponent implements OnInit {
 
   @Input()
-  fields: FormField;
+  fields;
 
   @Output()
   fieldsChange = new EventEmitter();

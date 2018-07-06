@@ -12,6 +12,7 @@ import { SharedModule } from './shared/shared.module';
 import { NavbarModule } from './navbar/navbar.module';
 import {TodosModule} from './todos/todos.module';
 import { FormModule } from './form/form.module';
+import { FormReactiveModule } from './form-reactive/form-reactive.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormModule } from './form/form.module';
     SkillsModule.forRoot(),
     TodosModule,
     AppRoutingModule,
-    FormModule
+    FormModule,
+    FormReactiveModule
   ],
   providers: [],
   bootstrap: [AppComponent]
