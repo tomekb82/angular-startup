@@ -18,6 +18,16 @@ export class AppComponent {
       name: 'About',
       link: '#/about',
       active: false
+    },
+    {
+      name: 'Forms - template',
+      link: '#/form',
+      active: false
+    },
+    {
+      name: 'Forms - reactive',
+      link: '#/form-reactive',
+      active: false
     }
   ];
 }

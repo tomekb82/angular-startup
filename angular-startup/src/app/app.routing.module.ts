@@ -4,6 +4,10 @@ import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AboutComponent} from './about/about.component';
 import {SkillsComponent} from './skills/skills.component';
+import {FormComponent} from './form/form.component';
+import {FormWrapperComponent} from './form/form-wrapper.component';
+import {FormReactiveComponent} from './form-reactive/form-reactive.component';
+import {FormReactiveWrapperComponent} from './form-reactive/form-reactive-wrapper.component';
 
 const routes: Routes = [
   {
@@ -13,6 +17,14 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'form',
+    component: FormWrapperComponent
+  },
+  {
+    path: 'form-reactive',
+    component: FormReactiveWrapperComponent
   },
   {
     path: 'not-found',
@@ -33,7 +45,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      enableTracing: true,
+      //enableTracing: true,
       useHash: true,
       // errorHandler:()=>{},
       // initialNavigation:true,
