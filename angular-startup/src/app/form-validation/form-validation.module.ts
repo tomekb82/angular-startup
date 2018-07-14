@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormValidationComponent } from './form-validation.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ValidateMatchFieldDirective } from './validate-match-field.directive';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   declarations: [
-    FormValidationComponent
+    FormValidationComponent,
+    ValidateMatchFieldDirective
   ],
   exports: [
     FormValidationComponent
