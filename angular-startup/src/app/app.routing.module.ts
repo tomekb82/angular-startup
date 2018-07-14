@@ -8,6 +8,7 @@ import {FormComponent} from './form/form.component';
 import {FormWrapperComponent} from './form/form-wrapper.component';
 import {FormReactiveComponent} from './form-reactive/form-reactive.component';
 import {FormReactiveWrapperComponent} from './form-reactive/form-reactive-wrapper.component';
+import {FormValidationComponent} from './form-validation/form-validation.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'form-reactive',
     component: FormReactiveWrapperComponent
+  },
+  {
+    path: 'form-validation',
+    component: FormValidationComponent
   },
   {
     path: 'not-found',
