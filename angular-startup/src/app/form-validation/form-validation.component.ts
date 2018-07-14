@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {Validator} from '../model/validator';
+import {Observer} from 'rxjs/Observer';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'form-registration',
@@ -19,6 +21,9 @@ import {Validator} from '../model/validator';
           </div>
           <div *ngIf="registrationForm.get('username').getError('maxlength') as error">
             Field has to have maximum {{error.requiredLength}} letters
+          </div>
+          <div *ngIf="registrationForm.get('username').hasError('invalid-username')">
+            Username is taken or invalid
           </div>
         </div>
       </div>
@@ -89,6 +94,8 @@ export class FormValidationComponent implements OnInit {
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(20)
+    ], [
+      this.validateUsername
     ]),
     email: this.form.control('', [
       Validators.required,
@@ -111,30 +118,48 @@ export class FormValidationComponent implements OnInit {
     return this.registrationForm.get(field).touched || this.registrationForm.get(field).dirty;
   }
 
+  validateUsername<AsyncValidatorFn>(control: FormControl) {
+    const {value} = control;
+
+    return Observable.create( (observer: Observer<ValidationErrors | null>) => {
+      setTimeout(() => {
+        const notAllowed = ['admin', 'user'];
+        const notValid = notAllowed.includes(value);
+        const result = notValid ? {
+          'invalid-username': value
+        } : null;
+        observer.next(result);
+        observer.complete();
+      }, 2000);
+    });
+  }
+
   validatePassword(options: Validator): ValidatorFn {
     return (control: FormControl) => {
+      const {value} = control;
+      const {lowercase, uppercase, number, special} = options;
 
-      const hasUppercase = control.value.match(/[A-Z]/);
-      const hasLowercase = control.value.match(/[a-z]/);
-      const hasNumber = control.value.match(/[\d]/);
-      const hasSpecial = control.value.match(/[\W]/);
+      const hasUppercase = value.match(/[A-Z]/);
+      const hasLowercase = value.match(/[a-z]/);
+      const hasNumber = value.match(/[\d]/);
+      const hasSpecial = value.match(/[\W]/);
 
       const errors: Validator = {};
       let valid = true;
 
-      if (options.lowercase && !hasLowercase) {
+      if (lowercase && !hasLowercase) {
         errors.lowercase = true;
         valid = false;
       }
-      if (options.uppercase && !hasUppercase) {
+      if (uppercase && !hasUppercase) {
         errors.uppercase = true;
         valid = false;
       }
-      if (options.number && !hasNumber) {
+      if (number && !hasNumber) {
         errors.number = true;
         valid = false;
       }
-      if (options.special && !hasSpecial) {
+      if (special && !hasSpecial) {
         errors.special = true;
         valid = false;
       }
