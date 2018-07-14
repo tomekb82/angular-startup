@@ -12,63 +12,40 @@ import {Observable} from 'rxjs/Observable';
       <div class="form-group">
         <label>Username</label>
         <input type="text" class="form-control" formControlName="username">
-        <div class="validation-feedback" *ngIf="checkField('username')">
-          <div *ngIf="registrationForm.get('username').hasError('required')">
-            Field is required
-          </div>
-          <div *ngIf="registrationForm.get('username').getError('minlength') as error">
-            Field has to have at least {{error.requiredLength}} letters
-          </div>
-          <div *ngIf="registrationForm.get('username').getError('maxlength') as error">
-            Field has to have maximum {{error.requiredLength}} letters
-          </div>
+        <validation-messages controlName="username">
           <div *ngIf="registrationForm.get('username').hasError('invalid-username')">
             Username is taken or invalid
           </div>
-        </div>
+        </validation-messages>
       </div>
       <div class="form-group">
         <label>E-Mail:</label>
         <input type="text" class="form-control" formControlName="email">
-        <div class="validation-feedback" *ngIf="checkField('email')">
-          <div *ngIf="registrationForm.get('email').hasError('required')">
-            Field is required
-          </div>
-          <div *ngIf="registrationForm.get('email').hasError('email')">
-            E-mail format is invalid.
-          </div>
-        </div>
+        <validation-messages controlName="email"></validation-messages>
       </div>
       <div class="form-group">
         <label>Password</label>
         <input type="text" class="form-control" formControlName="password">
-        <div class="validation-feedback" *ngIf="checkField('password')">
-          <div *ngIf="registrationForm.get('password').hasError('required')">
-            Field is required
-          </div>
-        <!--  <div *ngIf="registrationForm.get('password').hasError('pattern')">
-            Password format is invalid.
-          </div>-->
-          <div *ngIf="registrationForm.get('password').getError('password') as error">
+        <validation-messages controlName="password">
+          <div *ngIf="registrationForm.get('password').getError('custom-password') as error">
             Password has to contain
-            <div *ngIf="error.lowercase"> - lowercase letters </div>
-            <div *ngIf="error.uppercase"> - uppercase letters </div>
-            <div *ngIf="error.number"> - numbers </div>
-            <div *ngIf="error.special"> - special characters </div>
+            <div *ngIf="error.lowercase"> - lowercase letters</div>
+            <div *ngIf="error.uppercase"> - uppercase letters</div>
+            <div *ngIf="error.number"> - numbers</div>
+            <div *ngIf="error.special"> - special characters</div>
           </div>
-        </div>
+        </validation-messages>
       </div>
       <div class="form-group">
         <label>Repeat Password</label>
-        <input type="text" class="form-control" 
+        <input type="text" class="form-control"
                formControlName="repeat_password"
-               [validateMatchField]="{control: registrationForm.get('password'), key: 'password_match'}"
-               >
-        <div class="validation-feedback" *ngIf="checkField('repeat_password')">
+               [validateMatchField]="{control: registrationForm.get('password'), key: 'password_match'}">
+        <validation-messages controlName="repeat_password">
           <div *ngIf="registrationForm.get('repeat_password').hasError('password_match')">
             Passwords must match
           </div>
-        </div>
+        </validation-messages>
       </div>
       <div class="form-group">
         <input type="submit" class="btn btn-success btn-block" value="Register">
@@ -79,11 +56,6 @@ import {Observable} from 'rxjs/Observable';
     form .ng-invalid.ng-touched,
     form .ng-invalid.ng-dirty {
       border: 2px solid red !important;
-    }
-
-    form .ng-invalid.ng-touched ~ .validation-feedback,
-    form .ng-invalid.ng-dirty ~ .validation-feedback {
-      color: red;
     }
   `]
 })
@@ -121,7 +93,7 @@ export class FormValidationComponent implements OnInit {
   validateUsername<AsyncValidatorFn>(control: FormControl) {
     const {value} = control;
 
-    return Observable.create( (observer: Observer<ValidationErrors | null>) => {
+    return Observable.create((observer: Observer<ValidationErrors | null>) => {
       setTimeout(() => {
         const notAllowed = ['admin', 'user'];
         const notValid = notAllowed.includes(value);
@@ -165,7 +137,7 @@ export class FormValidationComponent implements OnInit {
       }
 
       return valid ? null : {
-        'password': errors
+        'custom-password': errors
       };
     };
   }
