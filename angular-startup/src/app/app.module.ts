@@ -13,6 +13,7 @@ import { NavbarModule } from './navbar/navbar.module';
 import {TodosModule} from './todos/todos.module';
 import { FormModule } from './form/form.module';
 import { FormReactiveModule } from './form-reactive/form-reactive.module';
+import { FormValidationModule } from './form-validation/form-validation.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FormReactiveModule } from './form-reactive/form-reactive.module';
     TodosModule,
     AppRoutingModule,
     FormModule,
-    FormReactiveModule
+    FormReactiveModule,
+    FormValidationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
