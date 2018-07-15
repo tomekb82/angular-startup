@@ -14,6 +14,8 @@ import {TodosModule} from './todos/todos.module';
 import { FormModule } from './form/form.module';
 import { FormReactiveModule } from './form-reactive/form-reactive.module';
 import { FormValidationModule } from './form-validation/form-validation.module';
+import { ProfileModule } from './profile/profile.module';
+import { LoginModule } from './login/login.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { FormValidationModule } from './form-validation/form-validation.module';
   ],
   imports: [
     BrowserModule,
+    ProfileModule,
     NavbarModule,
     SharedModule,
     SkillsModule.forRoot(),
@@ -31,7 +34,8 @@ import { FormValidationModule } from './form-validation/form-validation.module';
     AppRoutingModule,
     FormModule,
     FormReactiveModule,
-    FormValidationModule
+    FormValidationModule,
+    LoginModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

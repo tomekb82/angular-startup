@@ -15,10 +15,19 @@ export class AppComponent {
       active: true
     },
     {
+      name: 'Login',
+      link: '#/login',
+      active: false
+    },
+    {
+      name: 'Profile',
+      link: '#/profile',
+      active: false
+    },
+    {
       name: 'About',
       link: '#/about',
       active: false
-
     },
     {
       name: 'Forms - template',

@@ -1,30 +1,21 @@
 import { Injectable } from '@angular/core';
+import {Todo} from '../model/todo';
+import {HttpClient} from '@angular/common/http';
+import {User} from '../model/user';
 
 @Injectable()
 export class TodosService {
 
-  todos = [
-    {
-      name: 'Java',
-    },
-    {
-      name: 'Angular',
-    },
-    {
-      name: 'Javascript',
-    },
-    {
-      name: 'HTML',
-    },
-    {
-      name: 'CSS',
-    },
-  ];
+  url = 'http://localhost:3000/todos/';
 
-  getAll() {
-    return this.todos;
+  createTodo(todo: Partial<Todo>) {
+    return this.http.post<Todo>(this.url, todo);
   }
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getAll() {
+    return this.http.get<Todo[]>(this.url);
+  }
 
 }

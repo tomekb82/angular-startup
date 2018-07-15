@@ -25,6 +25,11 @@ import {SelectableService} from '../selectable/selectable.service';
               </div>
             </ng-container>
           </div>
+          
+          <div class="row">
+            <todos></todos>
+          </div>
+          
         </div>
       </div>
     </div>
