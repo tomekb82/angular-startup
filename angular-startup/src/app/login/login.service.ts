@@ -2,12 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {Credentials} from '../model/credentials';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {User} from '../model/user';
 import {map, tap} from 'rxjs/operators';
-
-interface Session {
-  user: User;
-}
+import {Session} from '../model/session';
 
 @Injectable()
 export class LoginService {
@@ -26,6 +22,11 @@ export class LoginService {
   getCurrentUser() {
     const session = this.session.getValue();
     return session && session.user;
+  }
+
+  getToken() {
+    const session = this.session.getValue();
+    return session && session.token;
   }
 
   login(credentials: Credentials) {

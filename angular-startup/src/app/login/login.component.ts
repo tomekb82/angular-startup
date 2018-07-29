@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const credetials: Credentials  = this.loginForm.value;
+    const credetials: Credentials = this.loginForm.value;
     this.loginService.login(credetials);
   }
 

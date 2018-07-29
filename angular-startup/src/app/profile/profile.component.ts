@@ -8,10 +8,8 @@ import {User} from '../model/user';
   template: `
     <div *ngIf="profile">
       <h3>User Profile</h3>
-      <p>Name:</p>
-      <p>{{profile.name}}</p>
-      <p>Username:</p>
-      <p>{{profile.username}}</p>
+      <p>Name: {{profile.name}}</p>
+      <p>Username: {{profile.username}}</p>
     </div>
     <button (click)="clearCache()">Clear cache</button>
   `,
@@ -28,7 +26,7 @@ export class ProfileComponent implements OnInit {
       .subscribe( user => this.profile = user);
   }
 
-  clearCache(){
+  clearCache() {
     this.profileService.clearCache();
   }
 
