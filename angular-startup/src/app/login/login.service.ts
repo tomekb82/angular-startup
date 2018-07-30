@@ -16,12 +16,12 @@ export class LoginService {
 
   state = this.session.pipe(
     map( session => !!session),
-    tap( state => this.isLoggedIn = state )
+    tap( state => this.isLoggedIn = state)
   );
 
   getCurrentUser() {
     const session = this.session.getValue();
-    return session && session.user;
+    return session && session.token && session.user;
   }
 
   getToken() {
@@ -29,16 +29,46 @@ export class LoginService {
     return session && session.token;
   }
 
-  login(credentials: Credentials) {
+  getMessage() {
+    const session = this.session.getValue();
+    return session && session.message;
+  }
+
+  login(credentials: Credentials, callback) {
     this.http.post(this.url, credentials)
       .subscribe((session: Session) => {
           this.session.next(session);
+          this.clearMessage();
+          callback();
         },
         error => {
           if (error instanceof HttpErrorResponse) {
-            console.error(error.error);
+            this.logout(error.error);
+            callback();
           }
         });
+  }
+
+  expireToken() {
+    this.session.next({
+      ...this.session.getValue(),
+      token: 'OLD_INVALID_TOKEN'
+    });
+  }
+
+  clearMessage() {
+    this.session.next({
+      ...this.session.getValue(),
+      message: null
+    });
+  }
+
+  logout(message?: string) {
+    this.session.next({
+      ...this.session.getValue(),
+      token: null,
+      message
+    });
   }
 
   constructor(private http: HttpClient) { }

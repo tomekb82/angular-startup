@@ -2,11 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {LoginService} from './login.service';
 import {Credentials} from '../model/credentials';
+import {filter, map, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'login',
   template: `
     <h3>Login</h3>
+
+    <div class="alert alert-danger" *ngIf="message">{{message}}</div>
+    
     <form [formGroup]="loginForm" (submit)="login()">
       <div class="form-group">
         <label for="">Username:</label>
@@ -23,6 +27,7 @@ import {Credentials} from '../model/credentials';
 })
 export class LoginComponent implements OnInit {
 
+  message: string;
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, private loginService: LoginService) {
@@ -33,11 +38,23 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const credetials: Credentials = this.loginForm.value;
-    this.loginService.login(credetials);
+    const credentials: Credentials = this.loginForm.value;
+    this.loginService.login(credentials,() => {
+      this.message = this.loginService.getMessage()
+    });
+
   }
 
   ngOnInit() {
+
+    this.loginService.state
+      .pipe(
+        filter(() => this.loginService.isLoggedIn),
+        map(() => this.loginService.getMessage()),
+        tap( message => this.message = message )
+      );
+
+    this.message = this.loginService.getMessage();
   }
 
 }
