@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   login() {
     const credentials: Credentials = this.loginForm.value;
     this.loginService.login(credentials,() => {
-      this.message = this.loginService.getMessage()
+      this.message = this.loginService.getMessage();
     });
 
   }

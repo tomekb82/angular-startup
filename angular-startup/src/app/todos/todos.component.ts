@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import {TodosService} from './todos.service';
 import {Observable} from 'rxjs/Observable';
 import {Todo} from '../model/todo';
+import {filter, map, tap} from 'rxjs/operators';
+import {LoginService} from '../login/login.service';
 
 @Component({
   selector: 'todos',
   template: `
     <div>
       <h3>Create Todo</h3>
+      <div class="alert alert-danger" *ngIf="message">{{message}}</div>
+      
       <div class="form-group">
         <input type="text" class="form-control" #titleRef>
       </div>
@@ -23,6 +27,7 @@ import {Todo} from '../model/todo';
 })
 export class TodosComponent implements OnInit {
 
+  message: string;
   todos: Observable<Todo[]>;
 
   addTodo(title) {
@@ -32,11 +37,12 @@ export class TodosComponent implements OnInit {
       .subscribe(() => {
         console.log('success!');
       }, err => {
-
+        this.message = this.loginService.getMessage();
+        // console.log(err);
       });
   }
 
-  constructor(private service: TodosService) {
+  constructor(private service: TodosService, private loginService: LoginService) {
     this.todos = service.getAll();
   }
 
