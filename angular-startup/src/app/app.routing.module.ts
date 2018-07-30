@@ -9,6 +9,8 @@ import {FormWrapperComponent} from './form/form-wrapper.component';
 import {FormReactiveComponent} from './form-reactive/form-reactive.component';
 import {FormReactiveWrapperComponent} from './form-reactive/form-reactive-wrapper.component';
 import {FormValidationComponent} from './form-validation/form-validation.component';
+import {ProfileComponent} from './profile/profile.component';
+import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,14 @@ const routes: Routes = [
   {
     path: 'about',
     component: AboutComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   },
   {
     path: 'form',

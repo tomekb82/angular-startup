@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'navbar-profile',
   template: `
-    <p>
-      navbar-profile works!
-    </p>
+    <profile-bar></profile-bar>
   `,
   styles: []
 })
