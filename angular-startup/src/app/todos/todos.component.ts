@@ -10,7 +10,7 @@ import {LoginService} from '../login/login.service';
   template: `
     <div>
       <h3>Create Todo</h3>
-      <div class="alert alert-danger" *ngIf="message">{{message}}</div>
+      <messages></messages>
       
       <div class="form-group">
         <input type="text" class="form-control" #titleRef>
@@ -47,6 +47,15 @@ export class TodosComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.loginService.state
+      .pipe(
+        filter(() => this.loginService.isLoggedIn),
+        map(() => this.loginService.getMessage()),
+        tap( message => this.message = message )
+      );
+
+    this.message = this.loginService.getMessage();
   }
 
 }

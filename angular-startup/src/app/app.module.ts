@@ -16,6 +16,7 @@ import { FormReactiveModule } from './form-reactive/form-reactive.module';
 import { FormValidationModule } from './form-validation/form-validation.module';
 import { ProfileModule } from './profile/profile.module';
 import { LoginModule } from './login/login.module';
+import { MessagesModule } from './messages/messages.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { LoginModule } from './login/login.module';
     FormReactiveModule,
     FormValidationModule,
     LoginModule,
+    MessagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
