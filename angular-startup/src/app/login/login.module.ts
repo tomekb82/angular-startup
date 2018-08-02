@@ -5,11 +5,13 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {LoginService} from './login.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {LoginInterceptorService} from './login-interceptor.service';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   declarations: [
     LoginComponent

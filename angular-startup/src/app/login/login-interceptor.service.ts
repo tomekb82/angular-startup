@@ -16,9 +16,10 @@ export class LoginInterceptorService implements HttpInterceptor {
         if (err instanceof HttpErrorResponse && err.status === 401) {
           this.loginService.logout('Authorization Required - Please log in!');
           //return empty();
-          throw new Error(err.error);
+        } else {
+          this.loginService.setMessage(err.error);
         }
-
+        throw new Error(err.error);
         return Observable.throw(err);
       })
     );

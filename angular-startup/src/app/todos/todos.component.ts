@@ -38,7 +38,7 @@ import {LoginService} from '../login/login.service';
       </div>
       
       <div class="col">
-       <!-- <div class="alert alert-danger" *ngIf="error">{{error}}</div>-->
+        <div class="alert alert-danger" *ngIf="error">{{error}}</div>
         <messages></messages>
         
         <h3>Create Todo</h3>
@@ -56,7 +56,6 @@ import {LoginService} from '../login/login.service';
 })
 export class TodosComponent implements OnInit {
 
-  message: string;
   error: boolean;
   todos: Observable<Todo[]>;
 
@@ -69,27 +68,16 @@ export class TodosComponent implements OnInit {
       title
     })
       .subscribe(() => {
-        console.log('success!');
+        this.error = null;
       }, err => {
-        this.message = this.loginService.getMessage();
         this.error = err.message;
       });
   }
 
-  constructor(private service: TodosService, private loginService: LoginService) {
+  constructor(private service: TodosService) {
     this.todos = service.getTodos();
   }
 
-  ngOnInit() {
-
-    this.loginService.state
-      .pipe(
-        filter(() => this.loginService.isLoggedIn),
-        map(() => this.loginService.getMessage()),
-        tap( message => this.message = message )
-      );
-
-    this.message = this.loginService.getMessage();
-  }
+  ngOnInit() {}
 
 }
