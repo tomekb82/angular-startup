@@ -25,6 +25,13 @@ export class TodosService {
     });
   }
 
+  setPerPage(perpage) {
+    this.searchParams.next({
+      ...this.searchParams.getValue(),
+      perpage
+    });
+  }
+
   createTodo(todo: Partial<Todo>) {
     return this.http.post<Todo>(this.url, todo);
   }

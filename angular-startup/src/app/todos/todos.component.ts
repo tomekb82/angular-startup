@@ -20,11 +20,11 @@ import {LoginService} from '../login/login.service';
             {{i+1}}. {{todo.title}} <input type="checkbox" [checked]="todo.completed" />
           </div>
         </div>
-       <!-- <div class="input-group mt-3" *ngIf="todos | async">
+       <div class="input-group mt-3" *ngIf="todos | async">
           <div class="input-group-prepend">
             <div class="input-group-text">Showing</div>
           </div>
-          <select class="form-control" (change)="todosService.setPerPage($event.target.value)">
+          <select class="form-control" (change)="service.setPerPage($event.target.value)">
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
@@ -34,12 +34,13 @@ import {LoginService} from '../login/login.service';
               of {{ (todos | async)?.length || 0 }} todos
             </div>
           </div>
-        </div>-->
+        </div>
       </div>
       
       <div class="col">
-        <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+        
         <messages></messages>
+        <div class="alert alert-info" *ngIf="error"><b>Server error message: </b>{{error}}</div>
         
         <h3>Create Todo</h3>
         <div class="form-group">
@@ -57,7 +58,7 @@ import {LoginService} from '../login/login.service';
 export class TodosComponent implements OnInit {
 
   error: boolean;
-  todos: Observable<Todo[]>;
+  todos: Observable<Todo[]> = this.service.getTodos();
 
   search(query) {
     this.service.search(query);
@@ -74,9 +75,7 @@ export class TodosComponent implements OnInit {
       });
   }
 
-  constructor(private service: TodosService) {
-    this.todos = service.getTodos();
-  }
+  constructor(protected service: TodosService) {}
 
   ngOnInit() {}
 
