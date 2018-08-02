@@ -13,7 +13,8 @@ import {LoginService} from '../login/login.service';
       <div class="col">
         <h3>Search Todos</h3>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" (keyup.enter)="search($event.target.value)" placeholder="Search ...">
+          <input type="text" class="form-control" (keyup.enter)="search($event.target.value)" placeholder="Search ..."
+                 [value]="service.searchParams.getValue().query">
         </div>
         <div class="list-group">
           <div class="list-group-item" *ngFor="let todo of todos | async; let i = index" [selectable]="todo">
@@ -22,16 +23,26 @@ import {LoginService} from '../login/login.service';
         </div>
        <div class="input-group mt-3" *ngIf="todos | async">
           <div class="input-group-prepend">
-            <div class="input-group-text">Showing</div>
+            <div class="input-group-text">Page</div>
           </div>
-          <select class="form-control" (change)="service.setPerPage($event.target.value)">
+         <input type="number" class="form-control"
+                (change)="service.setPage($event.target.value)"
+                min="1"
+                [value]="service.searchParams.getValue().page"
+                [max]="service.state.pages">
+         <div class="input-group-prepend">
+           <div class="input-group-text">Per Page</div>
+         </div>
+         <select class="form-control" (change)="service.setPerPage($event.target.value)"
+                  [value]="service.searchParams.getValue().perpage">
+            <option value="5">5</option>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="30">30</option>
           </select>
           <div class="input-group-append">
             <div class="input-group-text">
-              of {{ (todos | async)?.length || 0 }} todos
+              of {{ service.state.total || 0 }}
             </div>
           </div>
         </div>
