@@ -12,7 +12,7 @@ export class ProfileService {
 
   private user_request: Observable<User>;
 
-  getUserProfile() {
+  getUserProfile(): Observable<User> {
 
     if (!this.user_request) {
       /*this.user_request = this.http

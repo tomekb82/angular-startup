@@ -10,16 +10,6 @@ export class AppComponent {
 
   nav: Nav[] = [
     {
-      name: 'Home',
-      link: '#/home',
-      active: true
-    },
-    {
-      name: 'Login',
-      link: '#/login',
-      active: false
-    },
-    {
       name: 'Profile',
       link: '#/profile',
       active: false
@@ -39,10 +29,5 @@ export class AppComponent {
       link: '#/form-reactive',
       active: false
     },
-    {
-      name: 'Forms - validation',
-      link: '#/form-validation',
-      active: false
-    }
   ];
 }

@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Nav} from '../model/nav';
+import {LoginService} from '../login/login.service';
 
 @Component({
   selector: 'navbar',
@@ -9,8 +10,13 @@ import {Nav} from '../model/nav';
         <navbar-logo></navbar-logo>
         <div class="navbar-collapse">
           <ul class="navbar-nav">
-            <ng-container >
-              <li *ngFor="let page of pages" class="nav-item" ngClass="page.active">
+            <li class="nav-item active">
+              <a class="nav-link" href="#/">
+                Home
+              </a>
+            </li>
+            <ng-container *ngIf="loginService.isLoggedIn">
+              <li *ngFor="let page of pages" class="nav-item">
                 <a class="nav-link" [href]="page.link">
                   {{page.name}}
                 </a>
@@ -33,7 +39,7 @@ export class NavbarComponent implements OnInit {
   @Input()
   pages: Nav[];
 
-  constructor() { }
+  constructor(protected loginService: LoginService) { }
 
   ngOnInit() {
   }

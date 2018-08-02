@@ -7,7 +7,7 @@ import {Observable} from 'rxjs/Observable';
 @Component({
   selector: 'form-registration',
   template: `
-    <h3>Form Registration</h3>
+    <h3>Registration</h3>
     <form [formGroup]="registrationForm">
       <div class="form-group">
         <label>Username</label>
