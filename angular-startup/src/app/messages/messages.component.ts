@@ -5,6 +5,7 @@ import {filter, map, tap} from 'rxjs/operators';
 @Component({
   selector: 'messages',
   template: `
+    test
     <div class="alert alert-danger" *ngIf="message">
       {{message}}
       <span class="close" (click)="removeMessage()">&times;</span>
@@ -27,7 +28,6 @@ export class MessagesComponent implements OnInit {
       .pipe(
         map(() => this.loginService.getMessage()),
         tap( message => {
-          debugger;
           this.message = message;
         } )
       );

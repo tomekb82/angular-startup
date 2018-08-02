@@ -4,6 +4,7 @@ import {Credentials} from '../model/credentials';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {map, tap} from 'rxjs/operators';
 import {Session} from '../model/session';
+import {SearchParams} from '../model/search-params';
 
 @Injectable()
 export class LoginService {
