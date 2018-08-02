@@ -4,6 +4,7 @@ import {Credentials} from '../model/credentials';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {map, tap} from 'rxjs/operators';
 import {Session} from '../model/session';
+import {SearchParams} from '../model/search-params';
 
 @Injectable()
 export class LoginService {
@@ -34,32 +35,23 @@ export class LoginService {
     return session && session.message;
   }
 
-  login(credentials: Credentials, callback) {
-    this.http.post(this.url, credentials)
-      .subscribe((session: Session) => {
-          this.session.next(session);
-          this.clearMessage();
-          callback();
-        },
-        error => {
-          if (error instanceof HttpErrorResponse) {
-            this.logout(error.error);
-            callback();
-          }
-        });
-  }
-
-  expireToken() {
-    this.session.next({
-      ...this.session.getValue(),
-      token: 'OLD_INVALID_TOKEN'
-    });
+  login(credentials: Credentials) {
+    this.clearMessage();
+    return this.http.post(this.url, credentials)
+      .subscribe((session: Session) => this.session.next(session));
   }
 
   clearMessage() {
     this.session.next({
       ...this.session.getValue(),
       message: null
+    });
+  }
+
+  setMessage(message) {
+    this.session.next({
+      ...this.session.getValue(),
+      message
     });
   }
 

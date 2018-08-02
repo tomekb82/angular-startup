@@ -27,7 +27,9 @@ import {SelectableService} from '../selectable/selectable.service';
           </div>
           
           <div class="row">
-            <todos></todos>
+            <div class="col">
+              <todos></todos>
+            </div>
           </div>
           
         </div>

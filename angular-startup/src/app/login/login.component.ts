@@ -8,8 +8,7 @@ import {filter, map, tap} from 'rxjs/operators';
   selector: 'login',
   template: `
     <h3>Login</h3>
-
-    <div class="alert alert-danger" *ngIf="message">{{message}}</div>
+    <messages></messages>
     
     <form [formGroup]="loginForm" (submit)="login()">
       <div class="form-group">
@@ -27,7 +26,6 @@ import {filter, map, tap} from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
 
-  message: string;
   loginForm: FormGroup;
 
   constructor(private fb: FormBuilder, private loginService: LoginService) {
@@ -38,23 +36,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const credentials: Credentials = this.loginForm.value;
-    this.loginService.login(credentials,() => {
-      this.message = this.loginService.getMessage();
-    });
-
+    this.loginService.login(this.loginForm.value);
   }
 
-  ngOnInit() {
-
-    this.loginService.state
-      .pipe(
-        filter(() => this.loginService.isLoggedIn),
-        map(() => this.loginService.getMessage()),
-        tap( message => this.message = message )
-      );
-
-    this.message = this.loginService.getMessage();
-  }
+  ngOnInit() {}
 
 }
