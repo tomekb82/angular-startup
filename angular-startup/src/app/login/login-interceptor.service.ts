@@ -19,7 +19,7 @@ export class LoginInterceptorService implements HttpInterceptor {
         } else {
           this.loginService.setMessage(err.error);
         }
-        throw new Error(err.error);
+        //throw new Error(err.error);
         return Observable.throw(err);
       })
     );

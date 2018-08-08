@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
 import {HomeComponent} from './home/home.component';
@@ -17,6 +16,7 @@ import { FormValidationModule } from './form-validation/form-validation.module';
 import { ProfileModule } from './profile/profile.module';
 import { LoginModule } from './login/login.module';
 import { MessagesModule } from './messages/messages.module';
+import {PostsModule} from './posts/posts.module';
 
 @NgModule({
   declarations: [
@@ -32,12 +32,13 @@ import { MessagesModule } from './messages/messages.module';
     SharedModule,
     SkillsModule.forRoot(),
     TodosModule,
-    AppRoutingModule,
     FormModule,
     FormReactiveModule,
     FormValidationModule,
     LoginModule,
+    PostsModule,
     MessagesModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -30,16 +30,8 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'form',
-    component: FormWrapperComponent
-  },
-  {
-    path: 'form-reactive',
-    component: FormReactiveWrapperComponent
-  },
-  {
     path: 'form-validation',
-    component: FormValidationComponent
+    component: FormValidationComponent //TODO
   },
   {
     path: 'not-found',
@@ -60,7 +52,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      //enableTracing: true,
+      enableTracing: true,
       useHash: true,
       // errorHandler:()=>{},
       // initialNavigation:true,
