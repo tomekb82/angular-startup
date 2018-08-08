@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Nav} from './model/nav';
+import {FormValidationComponent} from './form-validation/form-validation.component';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +10,27 @@ import {Nav} from './model/nav';
 export class AppComponent {
 
   nav: Nav[] = [
+    // main routes
     {
-      name: 'Home',
-      link: '#/home',
-      active: true
+      name: 'Profile',
+      link: '#/profile'
     },
     {
       name: 'About',
-      link: '#/about',
-      active: false
+      link: '#/about'
+    },
+    // child routes
+    {
+      name: 'Forms - template',
+      link: '#/form'
+    },
+    {
+      name: 'Forms - reactive',
+      link: '#/form-reactive'
+    },
+    {
+      name: 'posts',
+      link: '#/posts'
     }
   ];
 }

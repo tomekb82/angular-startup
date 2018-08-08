@@ -31,9 +31,19 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 `ng g module app --routing`
 
-## Generate component to module
+## Generate source
 
-`ng g c home -it -is -m app --spec=false`
+### module 
+`ng g m forms -m app`
+
+### service 
+`ng g s forms/forms`
+
+### component 
+`ng g c forms/forms`
+
+### directive 
+`ng g d forms/forms`
 
 ## Adding boostrap
 
