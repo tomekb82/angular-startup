@@ -17,6 +17,8 @@ import { ProfileModule } from './profile/profile.module';
 import { LoginModule } from './login/login.module';
 import { MessagesModule } from './messages/messages.module';
 import {PostsModule} from './posts/posts.module';
+import { AlbumModule } from './album/album.module';
+import { PhotoModule } from './photo/photo.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import {PostsModule} from './posts/posts.module';
     LoginModule,
     PostsModule,
     MessagesModule,
+    PhotoModule,
+    AlbumModule,
     AppRoutingModule
   ],
   providers: [],

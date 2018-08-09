@@ -160,6 +160,7 @@
       "albumId": 1,
       "id": 1,
       "title": "accusamus beatae ad facilis cum similique qui sunt",
+      "description": "Some text",
       "url": "http://placehold.it/600/92c952",
       "thumbnailUrl": "http://placehold.it/150/92c952"
     },
@@ -167,6 +168,7 @@
       "albumId": 1,
       "id": 35,
       "title": "tenetur minus voluptatum et",
+      "description": "Some text 2",
       "url": "http://placehold.it/600/c96cad",
       "thumbnailUrl": "http://placehold.it/150/c96cad"
     },
@@ -174,6 +176,7 @@
       "albumId": 1,
       "id": 36,
       "title": "expedita rerum eaque",
+      "description": "Some text 3",
       "url": "http://placehold.it/600/4d564d",
       "thumbnailUrl": "http://placehold.it/150/4d564d"
     },

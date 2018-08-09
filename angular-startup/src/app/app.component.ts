@@ -29,8 +29,12 @@ export class AppComponent {
       link: '#/form-reactive'
     },
     {
-      name: 'posts',
+      name: 'Posts',
       link: '#/posts'
+    },
+    {
+      name: 'Albums',
+      link: '#/albums'
     }
   ];
 }
