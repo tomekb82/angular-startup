@@ -7,7 +7,7 @@ import {PhotoService} from './photo.service';
   selector: 'photos',
   template: `    
     <div class="row">
-      <div class="col-3" *ngFor="let photo of photos | async">
+      <div class="col-3sm" *ngFor="let photo of photos | async" style="padding: 5px">
         <div class="card"  style="width: 200px; height: 400px">
           <img class="card-img-top" [src]="photo.thumbnailUrl" alt="Card image">
           <div class="card-body">
