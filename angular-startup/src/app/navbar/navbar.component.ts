@@ -4,22 +4,27 @@ import {LoginService} from '../login/login.service';
 
 @Component({
   selector: 'navbar',
-  template: `
+  template: `    
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <div class="container">
         <navbar-logo></navbar-logo>
         <div class="navbar-collapse">
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#/">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                 Home
               </a>
             </li>
             <!--<ng-container *ngIf="loginService.isLoggedIn">-->
             <ng-container>
-              <li *ngFor="let page of pages" class="nav-item">
-                <a class="nav-link" [href]="page.link">
+              <li *ngFor="let page of pages" class="nav-item" >
+                <a class="nav-link" [routerLink]="page.link" routerLinkActive="active">
                   {{page.name}}
+                </a>
+              </li>
+              <li class="nav-item"  routerLinkActive="active">
+                <a class="nav-link" [routerLink]="[{ outlets: { popup: ['popup-todo'] } }]">
+                  Popup Todo
                 </a>
               </li>
             </ng-container>

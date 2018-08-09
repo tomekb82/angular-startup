@@ -7,6 +7,7 @@ import {PhotoService} from './photo.service';
   selector: 'photo',
   template: `
     <ng-container *ngIf="photo | async as photo">
+      <a routerLink="../../" class="d-flex flex-row-reverse">... Go back to photos</a>
       <div class="card-deck">
         <div class="card-body">
           <h4 class="card-title">{{photo.title}}</h4>

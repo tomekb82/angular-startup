@@ -5,16 +5,13 @@ import {Post} from '../model/post';
 
 @Component({
   selector: 'posts',
-  template: `    
-    <div class="row">
-      <div clas="col">
-        <h3>Posts</h3>
-        <div class="list-group">
-          <div class="list-group-item" *ngFor="let post of posts | async">
-            <a [href]="'#/posts/' + post.id"> {{post.title}} </a>
-          </div>
+  template: `
+    <div class="card-deck justify-content-around" style="padding: 10px"> 
+      <div class="card text-center mb-2" *ngFor="let post of posts | async" [routerLink]="[post.id]" [queryParams]="{page: 1}">
+        <div class="card-body" >
+          <h5 class="card-title">{{post.title}}</h5>
+          <div class="card-text">{{post.body | slice:0:20}}</div>
         </div>
-        
       </div>
     </div>
   `,

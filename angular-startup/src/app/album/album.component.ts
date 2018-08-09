@@ -8,7 +8,6 @@ import {map, switchMap} from 'rxjs/operators';
   template: `
     <ng-container *ngIf="album | async as album">
       <h3>Album: {{album.title}}</h3>
-      <!--<photos></photos>-->
       <router-outlet></router-outlet>
     </ng-container>
   `,

@@ -28,6 +28,7 @@ import { PhotoModule } from './photo/photo.module';
     AboutComponent,
   ],
   imports: [
+
     BrowserModule,
     ProfileModule,
     NavbarModule,
@@ -42,7 +43,7 @@ import { PhotoModule } from './photo/photo.module';
     MessagesModule,
     PhotoModule,
     AlbumModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

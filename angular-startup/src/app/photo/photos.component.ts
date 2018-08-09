@@ -13,7 +13,7 @@ import {PhotoService} from './photo.service';
           <div class="card-body">
             <h6 class="card-title">{{photo.title}}</h6>
             <p class="card-text">{{photo.description}}</p>
-            <a class="btn btn-primary" [href]="'#/albums/' + album_id + '/photos/' + photo.id">See photo</a>
+            <a class="btn btn-primary" [routerLink]="['/albums', album_id, 'photos', photo.id]" >See photo</a>
           </div>
         </div>
       </div>

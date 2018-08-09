@@ -5,6 +5,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { FormReactiveWrapperComponent } from './form-reactive-wrapper.component';
 import { FormReactiveComplexComponent } from './form-reactive-complex.component';
 import {FormReactiveRoutingModule} from './form-reactive-routing.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [

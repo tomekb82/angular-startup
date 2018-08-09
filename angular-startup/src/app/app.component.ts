@@ -13,28 +13,28 @@ export class AppComponent {
     // main routes
     {
       name: 'Profile',
-      link: '#/profile'
+      link: '/profile'
     },
     {
       name: 'About',
-      link: '#/about'
+      link: '/about'
     },
     // child routes
     {
       name: 'Forms - template',
-      link: '#/form'
+      link: '/form'
     },
     {
       name: 'Forms - reactive',
-      link: '#/form-reactive'
+      link: '/form-reactive'
     },
     {
       name: 'Posts',
-      link: '#/posts'
+      link: '/posts'
     },
     {
       name: 'Albums',
-      link: '#/albums'
+      link: '/albums'
     }
   ];
 }

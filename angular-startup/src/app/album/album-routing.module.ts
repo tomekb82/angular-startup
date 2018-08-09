@@ -4,28 +4,46 @@ import {AlbumComponent} from './album.component';
 import {AlbumsComponent} from './albums.component';
 import {PhotoComponent} from '../photo/photo.component';
 import {PhotosComponent} from '../photo/photos.component';
+import {AlbumsListComponent} from './albums-list.component';
 
 const routes: Routes = [
   {
     path: 'albums',
-    component: AlbumsComponent,
     children: [
       {
         path: '',
-        component: AlbumComponent
-      },
-      {
-        path: ':id',
-        component: AlbumComponent,
+        component: AlbumsComponent,
         children: [
           {
             path: '',
-            component: PhotosComponent
+            component: AlbumsListComponent,
+            outlet: 'list'
+          }
+        ]
+      },
+      {
+        path: ':id',
+        component: AlbumsComponent,
+        children: [
+          {
+            path: '',
+            component: AlbumsListComponent,
+            outlet: 'list'
           },
           {
-            path: 'photos/:id',
-            component: PhotoComponent
-          }
+            path: '',
+            component: AlbumComponent,
+            children: [
+              {
+                path: '',
+                component: PhotosComponent
+              },
+              {
+                path: 'photos/:id',
+                component: PhotoComponent
+              }
+            ]
+          },
         ]
       }
     ]

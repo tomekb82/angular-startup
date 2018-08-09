@@ -8,9 +8,9 @@ import {map} from 'rxjs/operators';
   template: `
     <div class="list-group">
       <div class="list-group-item"
-           [class.active]="album.id == selectedAlbumId"
+           routerLinkActive="active"
            *ngFor="let album of albums | async">
-        <a class="text-dark" [href]="'#/albums/' + album.id">{{album.title}}</a>
+        <a class="text-dark" [routerLink]="['/albums', album.id]">{{album.title}}</a>
       </div>
     </div>
   `,
@@ -26,7 +26,7 @@ export class AlbumsListComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.firstChild.paramMap.pipe(
+    this.route.paramMap.pipe(
       map(params => +params.get('id'))
     ).subscribe(id => {
       this.selectedAlbumId = id;
