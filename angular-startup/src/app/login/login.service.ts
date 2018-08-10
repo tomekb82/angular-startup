@@ -16,9 +16,12 @@ export class LoginService {
   private session = new BehaviorSubject<Session>(null);
 
   state = this.session.pipe(
-    map( session => !!session),
-    tap( state => this.isLoggedIn = state)
+    map(session => session && !!session.token)
   );
+
+  constructor(private http: HttpClient) {
+    this.state.subscribe(state => this.isLoggedIn = !!state);
+  }
 
   getCurrentUser() {
     const session = this.session.getValue();
@@ -62,7 +65,5 @@ export class LoginService {
       message
     });
   }
-
-  constructor(private http: HttpClient) { }
 
 }

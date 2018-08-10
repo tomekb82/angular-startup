@@ -4,11 +4,13 @@ import { FormComponent } from './form.component';
 import {FormsModule} from '@angular/forms';
 import { FormWrapperComponent } from './form-wrapper.component';
 import { FormGroupComponent } from './form-group.component';
+import {FormRoutingModule} from './form-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    FormRoutingModule
   ],
   declarations: [
     FormComponent,

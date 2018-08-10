@@ -31,7 +31,7 @@ export class TodosService {
     });
   }
 
-  setTotal(total: number){
+  setTotal(total: number) {
     this.state = {
       total,
       pages: Math.ceil(total / this.searchParams.getValue().perpage)
@@ -46,7 +46,7 @@ export class TodosService {
     });
   }
 
-  setPage(page: number){
+  setPage(page: number) {
     this.searchParams.next({
       ...this.searchParams.getValue(),
       page

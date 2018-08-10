@@ -3,14 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {AboutComponent} from './about/about.component';
-import {SkillsComponent} from './skills/skills.component';
-import {FormComponent} from './form/form.component';
-import {FormWrapperComponent} from './form/form-wrapper.component';
-import {FormReactiveComponent} from './form-reactive/form-reactive.component';
-import {FormReactiveWrapperComponent} from './form-reactive/form-reactive-wrapper.component';
 import {FormValidationComponent} from './form-validation/form-validation.component';
 import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
+import {PopupTodoComponent} from './todos/popup-todo.component';
 
 const routes: Routes = [
   {
@@ -30,16 +26,8 @@ const routes: Routes = [
     component: ProfileComponent
   },
   {
-    path: 'form',
-    component: FormWrapperComponent
-  },
-  {
-    path: 'form-reactive',
-    component: FormReactiveWrapperComponent
-  },
-  {
     path: 'form-validation',
-    component: FormValidationComponent
+    component: FormValidationComponent //TODO
   },
   {
     path: 'not-found',
@@ -54,14 +42,20 @@ const routes: Routes = [
     path: '**',
     redirectTo: 'not-found',
     pathMatch: 'full'
+  },
+  {
+    path: 'popup-todo',
+    component: PopupTodoComponent,
+    outlet: 'popup'
   }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      //enableTracing: true,
-      useHash: true,
+      enableTracing: true,
+      //useHash: true,
+      onSameUrlNavigation: 'reload',
       // errorHandler:()=>{},
       // initialNavigation:true,
     })

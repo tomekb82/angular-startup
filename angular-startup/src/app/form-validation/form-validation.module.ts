@@ -4,6 +4,7 @@ import { FormValidationComponent } from './form-validation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValidateMatchFieldDirective } from './validate-match-field.directive';
 import { ValidationMessagesComponent } from './validation-messages.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
