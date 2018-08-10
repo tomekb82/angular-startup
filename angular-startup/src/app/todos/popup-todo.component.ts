@@ -11,9 +11,10 @@ import {TodosService} from './todos.service';
         <div class="alert alert-danger" *ngIf="error">{{error}}</div>
         <div class="alert alert-success" *ngIf="message">{{message}}</div>
       </div>
+      <h3> Adding new todo</h3>
       <div class="input-group">
         <input type="text" class="form-control" #titleRef>
-        <button class="btn btn-success" (click)="addTodo(titleRef.value)">Add Todo</button>
+        <button class="btn btn-success" (click)="addTodo(titleRef.value)">Add</button>
       </div>
     </div>
   `,
