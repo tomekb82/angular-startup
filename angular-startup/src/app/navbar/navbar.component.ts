@@ -15,7 +15,6 @@ import {LoginService} from '../login/login.service';
                 Home
               </a>
             </li>
-            <!--<ng-container *ngIf="loginService.isLoggedIn">-->
             <ng-container>
               <li *ngFor="let page of pages" class="nav-item" >
                 <a class="nav-link" [routerLink]="page.link" routerLinkActive="active">

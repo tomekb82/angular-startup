@@ -6,6 +6,7 @@ import {LoginService} from './login.service';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {LoginInterceptorService} from './login-interceptor.service';
 import {SharedModule} from '../shared/shared.module';
+import {AuthorizedGuard} from './authorized.guard';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import {SharedModule} from '../shared/shared.module';
       provide: HTTP_INTERCEPTORS,
       useClass: LoginInterceptorService,
       multi: true
-    }
+    },
+    AuthorizedGuard
   ]
 })
 export class LoginModule { }

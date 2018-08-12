@@ -7,6 +7,7 @@ import { AlbumsComponent } from './albums.component';
 import { AlbumsListComponent } from './albums-list.component';
 import {AlbumService} from './album.service';
 import {PhotoModule} from '../photo/photo.module';
+import {AlbumResolve} from './album-resolve';
 
 @NgModule({
   imports: [
@@ -19,6 +20,8 @@ import {PhotoModule} from '../photo/photo.module';
     AlbumsComponent,
     AlbumsListComponent
   ],
-  providers: [AlbumService]
+  providers: [
+    AlbumService,
+    AlbumResolve]
 })
 export class AlbumModule { }

@@ -30,7 +30,7 @@ export class AlbumsListComponent implements OnInit {
       map(params => +params.get('id'))
     ).subscribe(id => {
       this.selectedAlbumId = id;
-    })
+    });
   }
 
 }

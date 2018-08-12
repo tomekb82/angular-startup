@@ -35,6 +35,10 @@ export class AppComponent {
     {
       name: 'Albums',
       link: '/albums'
+    },
+    {
+      name: 'Todos',
+      link: '/todos'
     }
   ];
 }

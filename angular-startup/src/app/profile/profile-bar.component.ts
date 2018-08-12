@@ -14,8 +14,8 @@ import {Observable} from 'rxjs/Observable';
     </ng-container>
     <ng-container *ngIf="!loginService.isLoggedIn">
       <span>  
-        <a routerLink="/login" >Login</a>  
-        <a routerLink="/form-validation" >| Register</a> 
+        <a routerLink="/login" >Login</a>  |
+        <a routerLink="/form-validation" >Register</a> 
       </span>
     </ng-container>
   `,
