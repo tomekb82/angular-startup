@@ -8,6 +8,7 @@ import {TodoGuardGuard} from './todo-guard.guard';
 import {FormsModule} from '@angular/forms';
 import {TodosRoutingModule} from './todos-routing.module';
 import {PopupTodoGuard} from './popup-todo-guard';
+import {Popup2TodoComponent} from './popup2-todo.component';
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {PopupTodoGuard} from './popup-todo-guard';
   ],
   declarations: [
     TodosComponent,
-    PopupTodoComponent
+    PopupTodoComponent,
+    Popup2TodoComponent
   ],
   exports: [
     TodosComponent

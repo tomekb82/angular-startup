@@ -9,7 +9,7 @@ import {PhotoService} from './photo.service';
     <div class="row">
       <div class="col-3sm" *ngFor="let photo of photos | async" style="padding: 5px">
         <div class="card"  style="width: 200px; height: 400px">
-          <img class="card-img-top" [src]="photo.thumbnailUrl" alt="Card image">
+          <img class="card-img-top" [src]="photo.thumbnailUrl" class="img-thumbnail" alt="Card image">
           <div class="card-body">
             <h6 class="card-title">{{photo.title}}</h6>
             <p class="card-text">{{photo.description}}</p>

@@ -5,6 +5,7 @@ import {TodoGuardGuard} from './todo-guard.guard';
 import {TodosComponent} from './todos.component';
 import {PopupTodoComponent} from './popup-todo.component';
 import {PopupTodoGuard} from './popup-todo-guard';
+import {Popup2TodoComponent} from './popup2-todo.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'popup-todo',
-        component: PopupTodoComponent,
+        component: Popup2TodoComponent,
         outlet: 'popup',
         /*canDeactivate: [
           PopupTodoGuard

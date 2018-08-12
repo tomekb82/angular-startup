@@ -5,6 +5,7 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {map, tap} from 'rxjs/operators';
 import {Session} from '../model/session';
 import {SearchParams} from '../model/search-params';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class LoginService {
@@ -19,7 +20,7 @@ export class LoginService {
     map(session => session && !!session.token)
   );
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.state.subscribe(state => this.isLoggedIn = !!state);
   }
 
@@ -64,6 +65,7 @@ export class LoginService {
       token: null,
       message
     });
+    this.router.navigate(['/']);
   }
 
 }

@@ -8,6 +8,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
 import {PopupTodoComponent} from './todos/popup-todo.component';
 import {AuthorizedGuard} from './login/authorized.guard';
+import {Popup2TodoComponent} from './todos/popup2-todo.component';
 
 const routes: Routes = [
   {
@@ -66,7 +67,7 @@ const routes: Routes = [
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      enableTracing: true,
+     // enableTracing: true,
       //useHash: true,
       onSameUrlNavigation: 'reload',
       // errorHandler:()=>{},

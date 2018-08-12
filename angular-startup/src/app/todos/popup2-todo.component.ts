@@ -6,50 +6,45 @@ import {debounceTime, map} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
 
 @Component({
-  selector: 'popup-todo',
-  template: `
-    <div>
-      <div>
-        <div class="close" (click)="close()">&times;</div>
-        <div class="alert alert-danger" *ngIf="error || getStError()">{{error || getStError()}}</div>
-        <div class="alert alert-success" *ngIf="message">{{message}}</div>
-      </div>
-      <h3> Adding new todo</h3>
-      <div class="input-group">
-        <input type="text" class="form-control" [(ngModel)]="title" id="title">
-        <button class="btn btn-success" (click)="addTodo()">Add</button>
+  selector: 'popup2-todo',
+  template: `    
+    <div class="modal" id="myModal" style="display: inline">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Heading</h4>
+            <button type="button" class="close" data-dismiss (click)="close()">&times;</button>
+            <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+            <div class="alert alert-success" *ngIf="message">{{message}}</div>
+          </div>
+
+          <!-- Modal body -->
+          <div class="modal-body">
+            Adding new todo
+            <div class="input-group">
+              <input type="text" class="form-control" [(ngModel)]="title" id="title">
+              <button class="btn btn-success" (click)="addTodo()">Add</button>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="close()">Close</button>
+          </div>
+
+        </div>
       </div>
     </div>
   `,
-  styles: [`
-   :host() {
-      width: 20%;
-      display: block;
-      position: fixed;
-      background: lightgrey;
-      left: 50%;
-      margin-left: -10%;
-      top: 25%;
-      border: 1px solid lightgray;
-      padding: 1em;
-   }
-  `]
+  styles: ['']
 })
-export class PopupTodoComponent implements OnInit {
-
-  static staticError: string;
+export class Popup2TodoComponent implements OnInit {
 
   title: string;
   error: string;
   message: string;
-
-  static setStaticError(error) {
-    PopupTodoComponent.staticError = error;
-  }
-
-  getStError() {
-    return PopupTodoComponent.staticError;
-  }
 
   setError(error) {
     this.error = error;
@@ -73,9 +68,8 @@ export class PopupTodoComponent implements OnInit {
   }
 
   close() {
-    this.router.navigate(['', { outlets: { popup: null }}]);
+    this.router.navigate(['todos', { outlets: { popup: null }}]);
   }
-
 
   constructor(protected todosService: TodosService,
               private router: Router) {
