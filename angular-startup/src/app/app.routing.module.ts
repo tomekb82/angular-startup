@@ -7,6 +7,7 @@ import {FormValidationComponent} from './form-validation/form-validation.compone
 import {ProfileComponent} from './profile/profile.component';
 import {LoginComponent} from './login/login.component';
 import {PopupTodoComponent} from './todos/popup-todo.component';
+import {AuthorizedGuard} from './login/authorized.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,10 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent
+    component: AboutComponent,
+    canActivate: [
+      AuthorizedGuard
+    ]
   },
   {
     path: 'login',
@@ -23,11 +27,17 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: ProfileComponent
+    component: ProfileComponent,
+    canActivate: [
+      AuthorizedGuard
+    ]
   },
   {
     path: 'form-validation',
-    component: FormValidationComponent //TODO
+    component: FormValidationComponent,
+    canActivate: [
+      AuthorizedGuard
+    ]
   },
   {
     path: 'not-found',
@@ -46,7 +56,10 @@ const routes: Routes = [
   {
     path: 'popup-todo',
     component: PopupTodoComponent,
-    outlet: 'popup'
+    outlet: 'popup',
+    canActivate: [
+      AuthorizedGuard
+    ]
   }
 ];
 

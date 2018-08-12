@@ -5,10 +5,16 @@ import {AlbumsComponent} from './albums.component';
 import {PhotoComponent} from '../photo/photo.component';
 import {PhotosComponent} from '../photo/photos.component';
 import {AlbumsListComponent} from './albums-list.component';
+import {AuthorizedGuard} from '../login/authorized.guard';
+import {AlbumResolve} from './album-resolve';
+import {PhotoResolve} from '../photo/photo-resolve';
 
 const routes: Routes = [
   {
     path: 'albums',
+    canActivateChild: [
+      AuthorizedGuard
+    ],
     children: [
       {
         path: '',
@@ -24,6 +30,9 @@ const routes: Routes = [
       {
         path: ':id',
         component: AlbumsComponent,
+        resolve: {
+          'album': AlbumResolve
+        },
         children: [
           {
             path: '',
@@ -40,7 +49,10 @@ const routes: Routes = [
               },
               {
                 path: 'photos/:id',
-                component: PhotoComponent
+                component: PhotoComponent,
+                resolve: {
+                  'photo': PhotoResolve
+                },
               }
             ]
           },

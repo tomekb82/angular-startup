@@ -20,14 +20,18 @@ import {PhotoService} from './photo.service';
 })
 export class PhotoComponent implements OnInit {
 
-  photoId = this.route.paramMap.pipe(
+  photo = this.route.data.pipe(
+    map(data => data.photo)
+  );
+
+/*  photoId = this.route.paramMap.pipe(
     map(params => +params.get('id')
     )
   );
 
   photo = this.photoId.pipe(
     switchMap(id => this.photoService.getPhoto(id))
-  );
+  );*/
 
   constructor(private photoService: PhotoService, private route: ActivatedRoute) { }
 

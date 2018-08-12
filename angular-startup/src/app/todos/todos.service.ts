@@ -5,6 +5,7 @@ import {switchMap, filter, share, tap, map} from 'rxjs/operators';
 import {LoginService} from '../login/login.service';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {SearchParams} from '../model/search-params';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class TodosService {
@@ -23,6 +24,12 @@ export class TodosService {
     total: 0,
     pages: 1
   };
+
+  title =  new BehaviorSubject<string>('');
+
+  setTitle(title) {
+    this.title.next(title);
+  }
 
   search(query: string) {
     this.searchParams.next({

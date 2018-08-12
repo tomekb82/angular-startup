@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {FormWrapperComponent} from './form-wrapper.component';
+import {AuthorizedGuard} from '../login/authorized.guard';
 
 const routes: Routes = [{
   path: 'form',
-  component: FormWrapperComponent
+  component: FormWrapperComponent,
+  canActivate: [
+    AuthorizedGuard
+  ],
 }];
 
 @NgModule({

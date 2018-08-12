@@ -4,11 +4,11 @@ import {Observable} from 'rxjs/Observable';
 import {Todo} from '../model/todo';
 import {filter, map, tap} from 'rxjs/operators';
 import {LoginService} from '../login/login.service';
+import {SelectableService} from '../selectable/selectable.service';
 
 @Component({
   selector: 'todos',
-  template: `
-
+  template: `    
     <div class="row">
       <div class="col">
         <h3>Search Todos</h3>
@@ -55,18 +55,35 @@ import {LoginService} from '../login/login.service';
         
         <h3>Create Todo</h3>
         <div class="form-group">
-          <input type="text" class="form-control" #titleRef>
+          <input type="text" class="form-control" [(ngModel)]="title">
+          <button class="btn btn-success" (click)="addTodo()">Add Todo</button>
         </div>
-        <button class="btn btn-success" (click)="addTodo(titleRef.value)">Add Todo</button>
+
+        <button class="btn btn-primary" 
+                [routerLink]="[{ outlets: { popup: ['popup-todo'] } }]" 
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact:true}">
+          Show popup
+        </button>
+        
       </div>
+      
+      
     </div>
     
     <div>
       
+      <router-outlet name="popup"></router-outlet>
+      
   `,
+  viewProviders: [
+    SelectableService
+  ],
   styles: []
 })
 export class TodosComponent implements OnInit {
+
+  title: string;
 
   error: boolean;
   todos: Observable<Todo[]> = this.service.getTodos();
@@ -75,9 +92,13 @@ export class TodosComponent implements OnInit {
     this.service.search(query);
   }
 
-  addTodo(title) {
+  setError(error) {
+    this.error = error;
+  }
+
+  addTodo() {
     this.service.createTodo({
-      title
+      title: this.title
     })
       .subscribe(() => {
         this.error = null;
@@ -88,6 +109,8 @@ export class TodosComponent implements OnInit {
 
   constructor(protected service: TodosService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.service.title.subscribe(title => this.title = title);
+  }
 
 }

@@ -49,12 +49,6 @@ export class PostComponent implements OnInit {
     })
   );
 
-  allComments = this.post.pipe(
-    switchMap((post ) => {
-      return this.postsService.getAllPostComments(post.id);
-    })
-  );
-
   constructor(private route: ActivatedRoute,
               private postsService: PostsService,
               private router: Router) {
